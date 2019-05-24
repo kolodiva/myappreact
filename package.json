@@ -1,0 +1,31 @@
+{
+  "scripts": {
+    "dev": "webpack-dev-server --mode development --module-bind js=babel-loader --open --hot --history-api-fallback",
+    "test": "webpack --mode development",
+    "build": "webpack --mode production --module-bind js=babel-loader"
+  },
+  "name": "mywebpack",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^2.1.1",
+    "html-loader": "^0.5.5",
+    "html-webpack-plugin": "^3.2.0",
+    "mini-css-extract-plugin": "^0.6.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1",
+    "webpack": "^4.32.2",
+    "webpack-cli": "^3.3.2"
+  },
+  "dependencies": {
+    "react-router": "^5.0.0",
+    "react-router-dom": "^5.0.0"
+  }
+}

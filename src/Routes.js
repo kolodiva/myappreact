@@ -1,0 +1,102 @@
+import React from "react";
+import { BrowserRouter as Router, Route, Link, Switch, Redirect } from "react-router-dom";
+
+
+class AppRouter extends React.Component {
+
+  constructor() {
+    super();
+    this.state = {
+      articles: [
+        { title: "React Redux Tutorial for Beginners", id: 1 },
+        { title: "Redux e React: cos'è Redux e come usarlo con React", id: 2 }
+      ]
+    };
+  }
+  
+  render() {
+
+    const { articles } = this.state;
+  
+    return (
+      <Router>
+        <div>
+          
+          <Header />
+
+          { <ul>{articles.map(el => <li key={el.id}>{el.title}</li>)}</ul> }
+
+
+          <Switch>
+
+  	        <Route exact path="/" component={ Home } />
+  	        <Route path="/about" component={About} />
+  	        <Route path="/topics" component={Topics} />
+
+  	        <Route render={ () => <p>Nothing was founded...</p>  } />
+
+          </Switch>
+
+        </div>
+
+      </Router>
+    );
+
+  }
+
+}
+
+function Home() {
+  return <h2>Home...</h2>;
+}
+
+const About = ({ match }) => {
+	
+  return <h2>About</h2>;
+}
+
+
+function Topic({ match }) {
+
+  return <h3>Requested Param: {match.params.id}</h3>;
+}
+
+function Topics({ match }) {
+  return (
+    <div>
+      <h2>Topics</h2>
+
+      <ul>
+        <li>
+          <Link to={`${match.url}/components`}>Components</Link>
+        </li>
+        <li>
+          <Link to={`${match.url}/props-v-state`}>Props v. State</Link>
+        </li>
+      </ul>
+
+      <Route path={`${match.path}/:id`} component={Topic} />
+     
+     <Route exact path={match.path} render={() => <h3>Please select a topic.</h3>} />
+
+    </div>
+  );
+}
+
+function Header() {
+  return (
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/about">About</Link>
+      </li>
+      <li>
+        <Link to="/topics">Topics</Link>
+      </li>
+    </ul>
+  );
+}
+
+export default AppRouter;
