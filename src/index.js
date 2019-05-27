@@ -5,4 +5,6 @@
 
 // ReactDOM.render( <AppRouter />, document.getElementById("app") );
 
+import './main.css' 
+
 import index from "./js/index"
