@@ -28,6 +28,7 @@ class Counter extends React.Component {
 	          <span className='mx-2'>{this.props.count}</span>
 	          <button onClick={this.increment}>+</button>
 	        </div>
+	        <img src={this.props.img} />
 	      </div>
 	    );
 
