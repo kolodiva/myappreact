@@ -1,6 +1,7 @@
 {
   "scripts": {
     "start": "webpack-dev-server --mode development --module-bind js=babel-loader --open --hot --history-api-fallback",
+    "dev": "nodemon server.js",
     "test": "webpack --mode development",
     "build": "webpack --mode production --module-bind js=babel-loader"
   },
@@ -14,6 +15,7 @@
     "@babel/plugin-transform-runtime": "^7.4.4",
     "@babel/preset-env": "^7.4.5",
     "@babel/preset-react": "^7.0.0",
+    "axios": "^0.18.0",
     "babel-loader": "^8.0.6",
     "babel-polyfill": "^6.26.0",
     "babel-preset-es2017": "^6.24.1",
@@ -21,7 +23,9 @@
     "html-loader": "^0.5.5",
     "html-webpack-plugin": "^3.2.0",
     "mini-css-extract-plugin": "^0.6.0",
+    "nodemon": "^1.19.1",
     "react": "^16.8.6",
+    "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6",
     "react-redux": "^7.0.3",
     "redux": "^4.0.1",
@@ -30,9 +34,10 @@
     "webpack-dev-server": "^3.4.1"
   },
   "dependencies": {
-    "axios": "^0.18.0",
     "babel-preset-es2015": "^6.24.1",
     "bootstrap": "^4.3.1",
+    "dateformat": "^3.0.3",
+    "pg": "^7.11.0",
     "react-router": "^5.0.0",
     "react-router-dom": "^5.0.0",
     "uuid": "^3.3.2"

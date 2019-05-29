@@ -2,9 +2,11 @@
 import React from "react";
 import { connect } from 'react-redux';
 
+import { Button } from 'react-bootstrap';
+
 function mapStateToProps(state) {
   return {
-    count: state.count
+    count: state.count, img: state.img
   };
 }
 
@@ -28,7 +30,7 @@ class Counter extends React.Component {
 	          <span className='mx-2'>{this.props.count}</span>
 	          <button onClick={this.increment}>+</button>
 	        </div>
-	        <img src={this.props.img} />
+	        <img src={ this.props.img } />
 	      </div>
 	    );
 
