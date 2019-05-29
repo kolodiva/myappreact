@@ -1,0 +1,96 @@
+const Hello = () => { return <div className='container text-center' style={{fontSize: '2rem', fontWeight: 'bold', color: 'white', lineHeight: '100vh'}}>Hello Redux.</div> }
+
+**************************************************************************************
+
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+
+const initialState = {
+  count: 0, 
+  img: './public/nofoto.png'
+};
+
+const reducer = (state = initialState, action) => {
+
+	switch(action.type) {
+		
+		case 'INCREMENT': return { count: state.count + 1 };
+		case 'DECREMENT': return { count: state.count - 1 };
+
+		case 'IMG': return { img: './public/logo_big.png' };
+
+		default: return state;
+
+	}
+}
+
+const store = createStore( reducer );
+
+/*****************************************************/
+// src/js/components/App.jsx
+import React from "react";
+import { connect } from 'react-redux';
+
+import { Button } from 'react-bootstrap';
+
+function mapStateToProps(state) {
+  return {
+    count: state.count, img: state.img
+  };
+}
+
+class Counter extends React.Component {
+
+  increment = () => {
+  		this.props.dispatch( {type: 'INCREMENT'} );
+   };
+
+   decrement = () => {
+   		this.props.dispatch( {type: 'DECREMENT'} );
+   };
+
+   render() {
+	
+		return (
+	      <div>
+	        <h2>Counter</h2>
+	        <div>
+	          <button onClick={this.decrement}>-</button>
+	          <span className='mx-2'>{this.props.count}</span>
+	          <button onClick={this.increment}>+</button>
+	        </div>
+	        <img src={ this.props.img } />
+	      </div>
+	    );
+
+	}
+
+}
+
+export default connect(mapStateToProps)(Counter);
+
+*************************************************************************
+const getCoffee = () => {
+	return new Promise( resolve => { setTimeout(() => resolve('coffee ready'), 2000); } );
+}
+
+async function go() {
+
+	try {
+
+    	const coffee = await getCoffee();
+    	console.log(coffee); 
+
+	const wes = await axios('https://api.github.com/users/kolodiva');
+    console.log(wes.data); // mediocre code 
+
+	const wordPromise = axios('https://api.github.com/users/kolodiva');
+    const userPromise = axios('https://api.github.com/users/kolodiva');
+    const namePromise = axios('https://api.github.com/users/kolodiva');
+    // await all three promises to come back and destructure the result into their own variables
+    const [word, user, name] = await Promise.all([wordPromise, userPromise, namePromise]);
+    console.log(word.data, user.data, name.data); // cool, {...}, {....}       	
+
+	} catch(e) {console.error(e)}
+
+};
